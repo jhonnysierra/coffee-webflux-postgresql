@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: coffee-webflux-postgresql
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/coffee
+    username: coffee
+    password: 12345
+    pool:
+      initial-size: 5
+      max-size: 20
+      max-idle-time: 30m
+      validation-query: SELECT  1
+
+springdoc:
+  swagger-ui:
+    path: /api
+
+server:
+  port: 8091
