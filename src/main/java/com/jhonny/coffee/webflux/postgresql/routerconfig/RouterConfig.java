@@ -29,7 +29,7 @@ public class RouterConfig {
     /**
      * Funcion que permite asignar la ruta a una funcion del controlador
      *
-     * @return
+     * @return nido de rutas
      */
     @Bean
     public RouterFunction<ServerResponse> routes() {
@@ -40,9 +40,11 @@ public class RouterConfig {
                 .andRoute(PATCH(COFFEE + "/update").and(accept(MediaType.APPLICATION_JSON)),
                         coffeeHandler::listenPATCHUpdateCoffee)
                 .andRoute(GET(COFFEE + "/list/all").and(accept(MediaType.APPLICATION_JSON)),
-                        coffeeHandler::listenGETListAll)
+                        serverRequest -> coffeeHandler.listenGETListAll())
                 .andRoute(GET(COFFEE + "/find/{id}").and(accept(MediaType.APPLICATION_JSON)),
                         coffeeHandler::listenGETCoffeeById)
+                .andRoute(GET(COFFEE + "/find/relation/{id}").and(accept(MediaType.APPLICATION_JSON)),
+                coffeeHandler::listenGETCoffeeByIdWithRelation)
                 .andRoute(DELETE(COFFEE + "/delete/{id}").and(accept(MediaType.APPLICATION_JSON)),
                         coffeeHandler::listenDELETEDeleteCoffee)
                 .andRoute(GET(COUNTRY + "/list/all").and(accept(MediaType.APPLICATION_JSON)),
