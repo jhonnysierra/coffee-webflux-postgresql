@@ -20,8 +20,8 @@ public class CoffeeHandler {
 
     private final ICoffeeService iCoffeeService;
     private static final Logger logger = LoggerFactory.getLogger(CoffeeHandler.class);
-    public Mono<ServerResponse> listenPOSTSaveCoffee(ServerRequest serverRequest) {
 
+    public Mono<ServerResponse> listenPOSTSaveCoffee(ServerRequest serverRequest) {
         return serverRequest.bodyToMono(CoffeeDTO.class)
                 .flatMap(coffeeDTO ->
                         ServerResponse
@@ -31,7 +31,6 @@ public class CoffeeHandler {
     }
 
     public Mono<ServerResponse> listenPATCHUpdateCoffee(ServerRequest serverRequest) {
-
         return serverRequest.bodyToMono(CoffeeDTO.class)
                 .flatMap(coffeeDTO ->
                         ServerResponse
@@ -39,7 +38,6 @@ public class CoffeeHandler {
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .body(iCoffeeService.updateCoffee(coffeeDTO), CoffeeDTO.class));
     }
-
     public Mono<ServerResponse> listenGETListAll() {
         return ServerResponse
                 .ok()
