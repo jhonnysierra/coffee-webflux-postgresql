@@ -1,5 +1,6 @@
 package com.jhonny.coffee.webflux.postgresql.service.implement;
 
+import com.jhonny.coffee.webflux.postgresql.excpetions.CoffeeNotFoundException;
 import com.jhonny.coffee.webflux.postgresql.model.Coffee;
 import com.jhonny.coffee.webflux.postgresql.model.dto.CoffeeDTO;
 import com.jhonny.coffee.webflux.postgresql.model.dto.CoffeeDTORelation;
@@ -59,7 +60,8 @@ public class ICoffeeServiceImpl implements ICoffeeService {
     public Mono<CoffeeDTO> findCoffeeById(int id) {
         logger.info("Entry to service implementation findCoffeeById {}", id);
         return coffeeRepository.findById(id)
-                .map(coffeeMapper::convertCoffeeToDTO);
+                .map(coffeeMapper::convertCoffeeToDTO)
+                .switchIfEmpty(Mono.error(new CoffeeNotFoundException(String.format("Coffee not found. ID: %s", id))));
     }
 
     @Override
