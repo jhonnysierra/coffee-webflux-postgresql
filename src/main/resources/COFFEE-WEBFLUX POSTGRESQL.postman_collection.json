@@ -1,0 +1,233 @@
+{
+	"info": {
+		"_postman_id": "b1309ddc-e29e-4baa-bff4-2980d0a081f6",
+		"name": "COFFEE-WEBFLUX POSTGRESQL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17499670"
+	},
+	"item": [
+		{
+			"name": "Save coffee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"name\":\"Java\",\r\n    \"originCountry\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8091/api/coffee/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"api",
+						"coffee",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update coffee",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"name\":\"Java\",\r\n    \"originCountry\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8091/api/coffee/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"api",
+						"coffee",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find coffee by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8091/api/coffee/find/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"api",
+						"coffee",
+						"find",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find coffee by Id complete",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8091/api/coffee/find/relation/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"api",
+						"coffee",
+						"find",
+						"relation",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List All Coffee",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8091/api/coffee/list/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"api",
+						"coffee",
+						"list",
+						"all"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/api/coffee/list/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"coffee",
+								"list",
+								"all"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "transfer-encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 2,\n        \"name\": \"Caturra\",\n        \"originCountry\": 1\n    },\n    {\n        \"id\": 3,\n        \"name\": \"Arabica\",\n        \"originCountry\": 2\n    },\n    {\n        \"id\": 1,\n        \"name\": \"Java\",\n        \"originCountry\": 3\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "List All Country",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8091/api/country/list/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8091",
+					"path": [
+						"api",
+						"country",
+						"list",
+						"all"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8091/api/coffee/list/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"coffee",
+								"list",
+								"all"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "transfer-encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 2,\n        \"name\": \"Caturra\",\n        \"originCountry\": 1\n    },\n    {\n        \"id\": 3,\n        \"name\": \"Arabica\",\n        \"originCountry\": 2\n    },\n    {\n        \"id\": 1,\n        \"name\": \"Java\",\n        \"originCountry\": 3\n    }\n]"
+				}
+			]
+		}
+	]
+}
