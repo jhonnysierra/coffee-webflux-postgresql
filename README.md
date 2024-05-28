@@ -3,6 +3,9 @@ Proyecto webflux que realiza conexión a base de datos Postgres con R2DBC. Este 
 Se implementa API-REST con uso de RouterFunction
 Se realiza implementación de manejo de relaciones en base de datos relacional que incluyen tablas con llaves foráneas.
 
+## Mejoras
+* Implementación manejo de excpeciones por método global para todos los endpoints
+* Configuración de conexión a base de datos por bean de conexión. Actualmente se encuentra por archivo yaml.
 ## Version de spring boot
 3.2.5
 
