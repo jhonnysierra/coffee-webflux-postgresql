@@ -16,11 +16,18 @@
  *
  */
 
-package com.jhonny.coffee.webflux.postgresql.excpetions;
+package com.jhonny.coffee.webflux.postgresql.excpetions.model;
 
-public class CoffeeNotFoundException extends RuntimeException {
-	public CoffeeNotFoundException(String message) {
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+@Getter
+@RequiredArgsConstructor
+public class DomainException extends Exception {
+	private final ErrorMessage errorMessage;
+	public DomainException(String message, ErrorMessage errorMessage) {
 		super(message);
+		this.errorMessage = errorMessage;
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.jhonny.coffee.webflux.postgresql.service.implement;
 
-import com.jhonny.coffee.webflux.postgresql.excpetions.CoffeeNotFoundException;
+import com.jhonny.coffee.webflux.postgresql.excpetions.model.DomainException;
+import com.jhonny.coffee.webflux.postgresql.excpetions.model.ErrorMessage;
 import com.jhonny.coffee.webflux.postgresql.model.Coffee;
 import com.jhonny.coffee.webflux.postgresql.model.dto.CoffeeDTO;
 import com.jhonny.coffee.webflux.postgresql.model.dto.CoffeeDTORelation;
@@ -58,15 +59,16 @@ public class ICoffeeServiceImpl implements ICoffeeService {
 
     @Override
     public Mono<CoffeeDTO> findCoffeeById(int id) {
-        logger.info("Entry to service implementation findCoffeeById {}", id);
+        logger.info("Entry to service implementation findCoffeeById = {}", id);
         return coffeeRepository.findById(id)
                 .map(coffeeMapper::convertCoffeeToDTO)
-                .switchIfEmpty(Mono.error(new CoffeeNotFoundException(String.format("Coffee not found. ID: %s", id))));
+                .switchIfEmpty(Mono.error(new DomainException(String.format("Coffee not found. ID: %s", id), ErrorMessage.NOT_FOUND)))
+                .doOnError(throwable -> logger.error(throwable.getMessage()));
     }
 
     @Override
     public Mono<CoffeeDTORelation> findCoffeeByIdWithRelation(int id) {
-        logger.info("Entry to service implementation findCoffeeByIdWithRelation {}", id);
+        logger.info("Entry to service implementation findCoffeeByIdWithRelation =  {}", id);
         return coffeeRepository.findById(id)
                 //.map(coffeeMapper::convertCoffeeToDTO)
                 .flatMap(coffee ->
