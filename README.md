@@ -5,7 +5,7 @@ Se realiza implementación de manejo de relaciones en base de datos relacional q
 
 ## Mejoras
 * Implementación manejo de excpeciones por método global para todos los endpoints
-* Configuración de conexión a base de datos por bean de conexión. Actualmente se encuentra por archivo yaml.
+
 ## Version de spring boot
 3.2.5
 
