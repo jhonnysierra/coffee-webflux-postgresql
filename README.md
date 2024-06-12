@@ -4,7 +4,8 @@ Se implementa API-REST con uso de RouterFunction
 Se realiza implementación de manejo de relaciones en base de datos relacional que incluyen tablas con llaves foráneas.
 
 ## Mejoras
-* Implementación manejo de excpeciones por método global para todos los endpoints
+* Implementación manejo de excepciones por método global para todos los endpoints
+* Implementación método delete
 
 ## Version de spring boot
 3.2.5

@@ -36,6 +36,12 @@ public class ICoffeeServiceImpl implements ICoffeeService {
     @Override
     public Mono<CoffeeDTO> saveCoffee(CoffeeDTO coffeeDTO) {
         Coffee coffee = coffeeMapper.convertDTOToCoffee(coffeeDTO);
+        //Para este caso se guarda el objeto sin validar que exista antes. No se envía el id en el body del request
+        /*return coffeeRepository.save(coffee)
+                .doOnSuccess(coffee2 -> logger.info("Coffee Saved {}", coffee2))
+                .map(coffeeMapper::convertCoffeeToDTO);*/
+
+        //Implementacion cuando se envía el id en el objeto json. Se debe enviar el id en el body del request
         return coffeeRepository.findById(coffee.getId())
                 .filter(Objects::isNull)
                 .flatMap(coffee1 ->
