@@ -53,12 +53,14 @@ public class ICoffeeServiceImpl implements ICoffeeService {
 
     @Override
     public Mono<CoffeeDTO> updateCoffee(CoffeeDTO coffeeDTO) {
-        logger.error("Entry to service implementation {}", coffeeDTO);
-        return coffeeRepository.findById(coffeeDTO.getId())
+        Coffee coffee = coffeeMapper.convertDTOToCoffee(coffeeDTO);
+        logger.info("Entry to service implementation {}", coffeeDTO);
+        return coffeeRepository.findById(coffee.getId())
                 .filter(Objects::nonNull)
                 .doOnError(throwable -> logger.error("Error find coffee {}", throwable.getMessage()))
-                .flatMap(coffeeRepository::save)
-                .doOnError(throwable -> logger.error("Error updated coffee {}", throwable.getMessage()))
+                .flatMap(coffee1 ->
+                    coffeeRepository.save(coffee)
+                            .doOnSuccess(coffee2 -> logger.info("Coffee Updated {}", coffee2)))
                 .map(coffeeMapper::convertCoffeeToDTO)
                 .switchIfEmpty(Mono.error(new Throwable("The coffee not exists")));
     }
