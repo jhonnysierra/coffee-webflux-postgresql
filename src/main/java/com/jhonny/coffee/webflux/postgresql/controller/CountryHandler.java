@@ -1,5 +1,6 @@
 package com.jhonny.coffee.webflux.postgresql.controller;
 
+import com.jhonny.coffee.webflux.postgresql.model.CountryCoffee;
 import com.jhonny.coffee.webflux.postgresql.model.dto.CountryDTO;
 import com.jhonny.coffee.webflux.postgresql.service.ICountryService;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +31,13 @@ public class CountryHandler {
                 .ok()
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(iCountryService.listAllCountry(), CountryDTO.class);
+    }
+
+    public Mono<ServerResponse> listenGETListAllWithCoffee(ServerRequest serverRequest) {
+        return ServerResponse
+                .ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(iCountryService.listAllCountryWithCoffee(), CountryCoffee.class);
     }
 
     public Mono<ServerResponse> listenGETListCountryById(ServerRequest serverRequest) {

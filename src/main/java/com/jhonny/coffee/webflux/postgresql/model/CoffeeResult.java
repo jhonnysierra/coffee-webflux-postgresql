@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -14,17 +13,16 @@ import org.springframework.data.relational.core.mapping.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "coffee")
-public class Coffee {
+public class CoffeeResult {
+
     @Id
-    @Column("id")
+    @Column("co_id")
     private int id;
 
-    @Column("name")
+    @Column("co_name")
     private String name;
 
-    @Column("origin_country")
+    @Column("co_origin_country")
     private int originCountry;
 
-    @Transient
-    private Country country;
 }

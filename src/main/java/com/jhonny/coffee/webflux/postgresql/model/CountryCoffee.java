@@ -5,26 +5,29 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
 import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.data.relational.core.mapping.Table;
 
+import java.util.List;
+
 @Data
-@Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "coffee")
-public class Coffee {
+@Builder
+@Table(name = "country")
+public class CountryCoffee {
+
     @Id
-    @Column("id")
+    @Column("c_id")
     private int id;
 
-    @Column("name")
+    @Column("c_name")
     private String name;
 
-    @Column("origin_country")
-    private int originCountry;
+    @Column("co_id")
+    private int nameCoffee;
 
-    @Transient
-    private Country country;
+    @MappedCollection(idColumn = "co_origin_country", keyColumn = "co_id")
+    private List<CoffeeResult> listCoffee;
 }

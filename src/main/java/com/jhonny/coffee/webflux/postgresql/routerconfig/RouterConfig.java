@@ -62,6 +62,8 @@ public class RouterConfig {
                         coffeeHandler::listenDELETEDeleteCoffee)
                 .andRoute(GET(COUNTRY + "/list/all").and(accept(MediaType.APPLICATION_JSON)),
                         countryHandler::listenGETListAll)
+                .andRoute(GET(COUNTRY + "/list/all/country/coffee").and(accept(MediaType.APPLICATION_JSON)),
+                        countryHandler::listenGETListAllWithCoffee)
                 ;
 
 
