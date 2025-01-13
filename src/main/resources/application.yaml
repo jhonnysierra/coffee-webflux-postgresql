@@ -12,6 +12,20 @@ spring:
 #      max-idle-time: 30m
 #      validation-query: SELECT  1
 
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          r2dbc:
+            core:
+              DefaultDatabaseClient: ${LOG_LEVEL:DEBUG}
+        r2dbc:
+          core: ${LOG_LEVEL:DEBUG}
+    io:
+      r2dbc:
+        postgresql: ${LOG_LEVEL:DEBUG}
+
 springdoc:
   swagger-ui:
     path: /api
