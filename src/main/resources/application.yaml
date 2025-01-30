@@ -16,6 +16,7 @@ logging:
   level:
     org:
       springframework:
+        web: info
         data:
           r2dbc:
             core:
@@ -25,6 +26,7 @@ logging:
     io:
       r2dbc:
         postgresql: ${LOG_LEVEL:DEBUG}
+    root: info
 
 springdoc:
   swagger-ui:

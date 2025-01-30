@@ -10,8 +10,7 @@ import reactor.core.publisher.Flux;
 public interface CountryCoffeeRepository extends ReactiveCrudRepository<CountryCoffee, Integer> {
 
     @Query("""
-            SELECT c.id as c_id, c.name c_name, 
-                co.id as co_id, co.name as co_name, co.origin_country as co_origin_country
+            SELECT c.id as c_id, c.name c_name, co.id as co_id, co.name as co_name
             FROM country c 
             INNER JOIN coffee co 
                 ON c.id = co.origin_country

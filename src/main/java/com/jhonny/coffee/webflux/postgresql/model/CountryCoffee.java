@@ -26,7 +26,10 @@ public class CountryCoffee {
     private String name;
 
     @Column("co_id")
-    private int nameCoffee;
+    private int idCoffee;
+
+    @Column("co_name")
+    private String nameCoffee;
 
     @MappedCollection(idColumn = "co_origin_country", keyColumn = "co_id")
     private List<CoffeeResult> listCoffee;

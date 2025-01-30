@@ -9,7 +9,8 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 public enum ErrorMessage {
 
-    NOT_FOUND(404, "Not Found");
+    NOT_FOUND(404, "Not Found"),
+    ERROR_DATABASE(500, "Error in BD");
 
     private int statusCode;
     private String message;

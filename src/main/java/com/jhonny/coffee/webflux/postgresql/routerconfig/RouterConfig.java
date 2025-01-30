@@ -45,6 +45,10 @@ public class RouterConfig {
         return RouterFunctions.route(
                 POST(COFFEE + "/save").and(accept(MediaType.APPLICATION_JSON)),
                         coffeeHandler::listenPOSTSaveCoffee)
+                .andRoute(POST(COFFEE + "/save/all").and(accept(MediaType.APPLICATION_JSON)),
+                        coffeeHandler::listenPOSTSaveAllCoffee)
+                .andRoute(POST(COFFEE + "/save/all/list").and(accept(MediaType.APPLICATION_JSON)),
+                        coffeeHandler::listenPOSTSaveAllCoffeeList)
                 .andRoute(PATCH(COFFEE + "/update").and(accept(MediaType.APPLICATION_JSON)),
                         coffeeHandler::listenPATCHUpdateCoffee)
                 .andRoute(GET(COFFEE + "/list/all").and(accept(MediaType.APPLICATION_JSON)),

@@ -7,6 +7,8 @@ import com.jhonny.coffee.webflux.postgresql.model.dto.CoffeeDTORelation;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface CoffeeMapper {
 
@@ -16,6 +18,7 @@ public interface CoffeeMapper {
     CoffeeDTO convertCoffeeToDTO(Coffee coffee);
     @Mapping(target = "originCountry", ignore = true)
     Coffee convertDTOACafeAllFields(CoffeeDTORelation coffeeDTORelation);
-
+    @Mapping(target = "country", ignore = true)
+    List<Coffee> convertListDtoToCoffee(List<CoffeeDTO> coffeeDTOList);
     CoffeeDTORelation convertDTOACafeAllFields(Coffee coffee);
 }

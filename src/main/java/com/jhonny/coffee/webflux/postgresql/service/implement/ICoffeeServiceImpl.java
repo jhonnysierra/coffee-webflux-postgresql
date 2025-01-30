@@ -5,6 +5,7 @@ import com.jhonny.coffee.webflux.postgresql.excpetions.model.ErrorMessage;
 import com.jhonny.coffee.webflux.postgresql.model.Coffee;
 import com.jhonny.coffee.webflux.postgresql.model.dto.CoffeeDTO;
 import com.jhonny.coffee.webflux.postgresql.model.dto.CoffeeDTORelation;
+import com.jhonny.coffee.webflux.postgresql.model.dto.CoffeeSaveAllDTO;
 import com.jhonny.coffee.webflux.postgresql.repository.CoffeeRepository;
 import com.jhonny.coffee.webflux.postgresql.repository.CountryRepository;
 import com.jhonny.coffee.webflux.postgresql.service.ICoffeeService;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -49,6 +51,25 @@ public class ICoffeeServiceImpl implements ICoffeeService {
                                 .doOnSuccess(coffee2 -> logger.info("Coffee Saved {}", coffee2)))
                 .map(coffeeMapper::convertCoffeeToDTO)
                 .switchIfEmpty(Mono.error(new Throwable("The coffee already exists")));
+    }
+
+    @Override
+    public Flux<CoffeeDTO> saveAllCoffee(CoffeeSaveAllDTO coffeeSaveAllDTO) {
+        List<Coffee> coffeeList = coffeeMapper.convertListDtoToCoffee(coffeeSaveAllDTO.getCoffeeDTOList());
+        return coffeeRepository.saveAll(coffeeList)
+                .map(coffeeMapper::convertCoffeeToDTO);
+    }
+
+    @Override
+    public Flux<CoffeeDTO> saveAllCoffeeList(List<CoffeeDTO> list) {
+        List<Coffee> coffeeList = coffeeMapper.convertListDtoToCoffee(list);
+        System.out.println("Ingresó a crear cafe con una lista");
+        return coffeeRepository.saveAll(coffeeList)
+                .map(coffeeMapper::convertCoffeeToDTO)
+                .map(coffeeDTO -> {
+                    System.out.println("Resultado despues de insert lista: " + coffeeDTO);
+                    return coffeeDTO;
+                });
     }
 
     @Override
