@@ -1,7 +1,7 @@
 package com.jhonny.coffee.webflux.postgresql.service.implement;
 
-import com.jhonny.coffee.webflux.postgresql.excpetions.model.DomainException;
-import com.jhonny.coffee.webflux.postgresql.excpetions.model.ErrorMessage;
+import com.jhonny.coffee.webflux.postgresql.exceptions.model.DomainException;
+import com.jhonny.coffee.webflux.postgresql.exceptions.model.ErrorMessage;
 import com.jhonny.coffee.webflux.postgresql.model.Coffee;
 import com.jhonny.coffee.webflux.postgresql.model.dto.CoffeeDTO;
 import com.jhonny.coffee.webflux.postgresql.model.dto.CoffeeDTORelation;

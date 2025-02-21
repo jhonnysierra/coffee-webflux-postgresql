@@ -1,4 +1,4 @@
-package com.jhonny.coffee.webflux.postgresql.excpetions.config;
+package com.jhonny.coffee.webflux.postgresql.exceptions.config;
 
 import org.springframework.boot.autoconfigure.web.WebProperties;
 import org.springframework.context.annotation.Bean;

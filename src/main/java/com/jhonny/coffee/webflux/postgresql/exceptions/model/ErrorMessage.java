@@ -1,4 +1,4 @@
-package com.jhonny.coffee.webflux.postgresql.excpetions.model;
+package com.jhonny.coffee.webflux.postgresql.exceptions.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

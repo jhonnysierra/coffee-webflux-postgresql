@@ -1,4 +1,4 @@
-package com.jhonny.coffee.webflux.postgresql.excpetions;
+package com.jhonny.coffee.webflux.postgresql.exceptions;
 
 
 import org.springframework.boot.web.error.ErrorAttributeOptions;

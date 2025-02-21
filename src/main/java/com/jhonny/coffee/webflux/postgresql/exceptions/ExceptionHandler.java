@@ -1,7 +1,7 @@
-package com.jhonny.coffee.webflux.postgresql.excpetions;
+package com.jhonny.coffee.webflux.postgresql.exceptions;
 
-import com.jhonny.coffee.webflux.postgresql.excpetions.model.DomainException;
-import com.jhonny.coffee.webflux.postgresql.excpetions.model.ErrorResponseDetail;
+import com.jhonny.coffee.webflux.postgresql.exceptions.model.DomainException;
+import com.jhonny.coffee.webflux.postgresql.exceptions.model.ErrorResponseDetail;
 import org.springframework.boot.autoconfigure.web.WebProperties;
 import org.springframework.boot.autoconfigure.web.reactive.error.AbstractErrorWebExceptionHandler;
 import org.springframework.boot.web.reactive.error.ErrorAttributes;
